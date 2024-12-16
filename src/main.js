@@ -5,27 +5,32 @@ import { createRouter, createWebHistory } from 'vue-router';
 import './css/app.css';
 
 const routes = [
-    { 
-        path: '/', 
-        name: 'home', 
+    {
+        path: '/',
+        name: 'home',
         component: () => import('./components/pages/HomeApp.vue'),
     },
-    { 
-        path: '/users', 
-        name: 'users', 
-        component: () => import('./components/pages/UsersApp.vue') 
+    {
+        path: '/users',
+        name: 'users',
+        component: () => import('./components/pages/UsersApp.vue')
     },
-  ]
+    {
+        path: '/users/new',
+        name: 'newUser',
+        component: () => import('./components/pages/NewUser.vue'),
+    },
+]
 
 const router = createRouter({
     history: createWebHistory(),
-    routes, 
+    routes,
     linkActiveClass: 'link-active',
 })
 
 const app = createApp(App)
 
-app.config.globalProperties.urlBackend = 'https://desafio.test'
+app.config.globalProperties.urlBackend = 'http://127.0.0.1:8000/api';
 
 app.use(router)
 app.mount('#app')
