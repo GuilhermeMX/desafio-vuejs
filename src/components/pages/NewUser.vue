@@ -40,6 +40,12 @@
                         <input type="date" id="created_at" v-model="form.created_at"
                             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
                     </div>
+                    <!-- Senha -->
+                    <div class="mb-4">
+                        <label for="password" class="block text-sm font-medium text-gray-700">Senha</label>
+                        <input type="password" id="password" v-model="form.password"
+                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+                    </div>
                     <!-- Botão de Salvar -->
                     <div class="mt-6 text-right">
                         <button type="submit"
@@ -65,12 +71,18 @@ export default {
                 phone: '',
                 company: '',
                 created_at: '',
+                password: '',
             },
         };
     },
     methods: {
         async handleSubmit() {
             try {
+                if (this.form.created_at) {
+                    const date = new Date(this.form.created_at);
+                    this.form.created_at = date.toISOString().split('T')[0];
+                }
+                
                 await axios.post('http://127.0.0.1:8000/api/users', this.form);
                 alert('Usuário salvo com sucesso!');
                 this.$router.push('/users'); // Redireciona para a lista de usuários
