@@ -28,12 +28,6 @@
                         <input type="text" id="phone" v-model="form.phone"
                             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
                     </div>
-                    <!-- Empresa -->
-                    <div class="mb-4">
-                        <label for="company" class="block text-sm font-medium text-gray-700">Empresa</label>
-                        <input type="text" id="company" v-model="form.company"
-                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
-                    </div>
                     <!-- Data de Cadastro -->
                     <div class="mb-4">
                         <label for="created_at" class="block text-sm font-medium text-gray-700">Data de Cadastro</label>
@@ -69,7 +63,6 @@ export default {
                 name: '',
                 email: '',
                 phone: '',
-                company: '',
                 created_at: '',
                 password: '',
             },
